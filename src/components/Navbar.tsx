@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';  // <= هنا الاستيراد المفقود
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { FaHome, FaUser, FaCode, FaTools, FaDownload, FaPlay, FaEnvelope } from 'react-icons/fa';
@@ -14,7 +15,7 @@ const Navbar = () => {
     { name: 'Skills', href: '/skills', icon: <FaTools size={20} /> },
     { name: 'Resume', href: '/resume', icon: <FaDownload size={20} /> },
     { name: 'Demo', href: '/demos', icon: <FaPlay size={20} className="text-green-400" /> }, 
-      { name: 'Contact', href: '/contact', icon: <FaEnvelope size={20} className="text-pink-400" /> },
+    { name: 'Contact', href: '/contact', icon: <FaEnvelope size={20} className="text-pink-400" /> },
   ];
 
   return (
@@ -51,22 +52,27 @@ const Navbar = () => {
       {/* ✅ Mobile Bottom Navigation */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-purple-900 to-cyan-900 backdrop-blur-md border-t border-white/10">
         <div className="flex justify-around py-3">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`flex flex-col items-center text-xs transition-colors duration-300 ${
-                pathname === link.href
-                  ? 'text-cyan-300'
-                  : link.name === 'Demo'
-                    ? 'text-green-400'
-                    : 'text-white'
-              }`}
-            >
-              {link.icon}
-              <span>{link.name}</span>
-            </Link>
-          ))}
+          {navLinks
+            .filter(link => link.name !== 'Resume' && link.name !== 'Demo')
+            .map((link) => {
+              // نزيد حجم الايقونات في الموبايل
+              const biggerIcon = React.cloneElement(link.icon, { size: 26 });
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`flex flex-col items-center text-xs transition-colors duration-300 ${
+                    pathname === link.href
+                      ? 'text-cyan-300'
+                      : 'text-white'
+                  }`}
+                >
+                  {biggerIcon}
+                  <span>{link.name}</span>
+                </Link>
+              );
+            })}
         </div>
       </div>
     </>
