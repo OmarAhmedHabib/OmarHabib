@@ -1,8 +1,13 @@
+'use client';
+
 import Navbar from '@/components/Navbar';
 import './globals.css';
 import type { Metadata } from 'next';
+import { ThemeProvider } from 'next-themes';
+import { useLocale, useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
-// ✅ تحسين الـ SEO Metadata
 export const metadata: Metadata = {
   title: 'Omar Ahmed Habib | Full Stack Developer',
   description: 'Portfolio of Omar Ahmed Habib - Full Stack Developer specializing in modern web applications with Next.js, React, and Node.js.',
@@ -48,16 +53,30 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const [mounted, setMounted] = useState(false);
+  const locale = useLocale();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
-    <html lang="en">
+    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
       <head>
         {/* ✅ دعم SEO إضافي + manifest */}
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#0f172a" />
       </head>
-      <body className="bg-gradient-to-br from-gray-900 to-black text-white min-h-screen">
-        <Navbar />
-        <main className="pt-16">{children}</main>
+      <body className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {mounted && (
+            <>
+              <Navbar />
+              <main className="pt-16">{children}</main>
+            </>
+          )}
+        </ThemeProvider>
       </body>
     </html>
   );

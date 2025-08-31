@@ -1,0 +1,52 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "resume": "Resume",
+    "demo": "Demo",
+    "contact": "Contact",
+    "brand": "Omar A. Habib"
+  },
+  "header": {
+    "name": "Omar Ahmed Habib",
+    "role1": "🚀 FrontEnd Developer",
+    "role2": "🛠️ Code Alchemist",
+    "role3": "🎮 Tech Explorer",
+    "role4": "💻 Full Stack Enthusiast",
+    "bio": "Coding the future with <span class='text-cyan-400'>creativity</span> and <span class='text-purple-400'>innovation</span>.",
+    "cv": "📄 CV",
+    "terminal": "🖥️ Open Terminal"
+  },
+  "skills": {
+    "title": "🧬 HOLOGRAPHIC SKILLS"
+  },
+  "projects": {
+    "title": "🔮 CYBER PROJECTS",
+    "neon": {
+      "title": "Neon E-Commerce",
+      "desc": "Sci-fi futuristic shop with holographic UI."
+    },
+    "cyberbot": {
+      "title": "AI CyberBot",
+      "desc": "Neural network chatbot with real-time hologram."
+    },
+    "portfolio": {
+      "title": "Quantum Portfolio",
+      "desc": "3D animated portfolio in a cyber world."
+    }
+  },
+  "contact": {
+    "title": "🛰️ INITIATE CONTACT",
+    "subtitle": "Engage communication protocol and send encrypted message to the command center. 🚀",
+    "name": "Commander ID",
+    "email": "Transmission Frequency",
+    "message": "Enter encrypted message...",
+    "send": "🚀 Send Transmission"
+  },
+  "resume": {
+    "title": "⚡ Deploy Resume Protocol",
+    "download": "📄 Download Resume"
+  }
+}
